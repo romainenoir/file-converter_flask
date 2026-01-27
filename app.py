@@ -2,9 +2,14 @@ from flask import Flask, render_template, redirect, url_for
 
 app = Flask(__name__)
 
+
 @app.route('/homepage')
 def homepage():
     return render_template("index.html")
+
+@app.route('/convert', methods=['GET', 'POST'])
+def convert():
+    return render_template("file.html")
 
 @app.route('/about')
 def about():
