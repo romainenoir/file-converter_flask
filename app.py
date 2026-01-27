@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'FILE_EXTRACTOR'
 
 
 @app.route('/homepage')
