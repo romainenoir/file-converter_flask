@@ -1,1 +1,4 @@
+'''
+Data used to sort website out
+'''
 file_types = {'.pdf':'PDF', '.txt':'TXT', '.csv':'CSV', '.doc':'DOC'}

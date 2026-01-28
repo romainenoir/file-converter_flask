@@ -4,7 +4,7 @@
 
 <div>
 {% for file_dot, file_name in file_types.items() %}
-<a href="{{ url_for('convert', file_type=file_name) }}">{{ file_name }}</a> |
+<a href="{{ url_for('convert', file_type=file_name) }}">{{ file_name }}</a>
 {% endfor %}   
 </div>
 
