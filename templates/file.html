@@ -2,6 +2,11 @@
 
 {% block content %}
 
+{% for file_dot, file_type in file_types.items() %}
+<a href="/convert/{{ file_type }}">{{ file_dot | title() }}</a>
+{% endfor %}
+
 <h1>Upload A {{ file_types[file_type] }} File</h1>
+
 
 {% endblock %}
