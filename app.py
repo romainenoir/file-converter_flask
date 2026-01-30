@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from components.data import file_types
+from components.forms import DOCConvert, PDFConvert, TXTConvert, CSVConvert
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'FILE_EXTRACTOR'

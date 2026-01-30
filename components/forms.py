@@ -1,5 +1,5 @@
 from wtforms import FileField, SubmitField
-from flask_wtf import FlaskForm,
+from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileRequired, FileAllowed
 '''Flask Forms For Application'''

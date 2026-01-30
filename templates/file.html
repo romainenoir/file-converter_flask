@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<div>
+<div class="convert-nav">
 {% for file_dot, file_name in file_types.items() %}
 <a href="{{ url_for('convert', file_type=file_name) }}">{{ file_name }}</a>
 {% endfor %}   
 </div>
 
 
-<h1>Upload A {{ file_type }} Document</h1>
+<h1>Upload A {{ file_type | upper() }} Document</h1>
 
 
 {% endblock %}
