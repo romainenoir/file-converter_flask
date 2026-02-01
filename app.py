@@ -11,7 +11,14 @@ def homepage():
 
 @app.route("/convert/<file_type>", methods=['GET', 'POST'])
 def convert(file_type):
-    return render_template("file.html", file_types=file_types, file_type=file_type)
+    user_upload = None
+    doc_converter = DOCConvert()
+    pdf_converter = PDFConvert()
+    txt_converter = TXTConvert()
+    csv_converter = CSVConvert()
+    return render_template("file.html", file_types=file_types, file_type=file_type, doc_converter=doc_converter,
+                           pdf_converter=pdf_converter, txt_converter=txt_converter, csv_converter=csv_converter,
+                           user_upload=user_upload)
 
 @app.route('/about')
 def about():
