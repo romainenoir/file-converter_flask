@@ -16,14 +16,13 @@ class PDF_CONVERT():
     """
     
     # PDF TO TXT
-    def PDF_to_TXT(file_=str):
+    def PDF_to_TXT(self, file_=str):
         """ PDF TO TXT
             (file_ = name of the file)"""
         file_reader = PdfReader(file_)
         page_num = file_reader._get_num_pages()
         extracted_text = ""
-        file_name_title = textcase.snake(file_reader.metadata.title) + '.txt'
-        file_name_title.strip()
+        file_name_title = textcase.snake(file_reader.metadata.title.strip()) + '.txt'
         for num in range(page_num):
             text_ = file_reader.pages[num]
             extracted_text += text_.extract_text()
@@ -32,7 +31,7 @@ class PDF_CONVERT():
             file.write(extracted_text)
     
     # PDF TO DOC     
-    def PDF_to_DOC(file_=str):
+    def PDF_to_DOC(self, file_=str):
         """_summary_
             CONVERTS PDFs TO DOCs
         Args:
@@ -49,26 +48,4 @@ class PDF_CONVERT():
         
         with open(file_name_title, 'w') as file:
             file.write(extracted_text)
-        
 
-def PDF_to_DOC(file_=str):
-    """_summary_
-        CONVERTS PDFs TO TXTs
-    Args:
-        file_ (_type_, optional): name of file. Defaults to str.
-    """
-    file_reader = PdfReader(file_)
-    page_num = file_reader._get_num_pages()
-    extracted_text = ""
-    file_name_title = textcase.snake(file_reader.metadata.title) + '.doc'
-    file_name_title.strip()
-    for num in range(page_num):
-        text_ = file_reader.pages[num]
-        extracted_text += text_.extract_text()
-    
-    with open(file_name_title, 'w') as file:
-        file.write(extracted_text)
-        
-
-    
-PDF_to_DOC("pdf_dummi.pdf")
