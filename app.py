@@ -1,10 +1,10 @@
 from flask import Flask, render_template, redirect, url_for
 from components.data import file_types
 from components.forms import DOCConvert, PDFConvert, TXTConvert, CSVConvert
-from config import app_config
+from config import app_config_key
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = app_config
+app.config['SECRET_KEY'] = app_config_key
 
 @app.route('/homepage')
 def homepage():
