@@ -22,4 +22,4 @@ def PDF_to_TXT(file_=str):
         
 
     
-PDF_Extract("pdf_dummi.pdf")
+PDF_to_TXT("pdf_dummi.pdf")
