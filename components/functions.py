@@ -3,7 +3,17 @@ import textcase
 
 # create function to extract text from PDF
 
-class PDF_EXTRACT():
+class PDF_CONVERT():
+    """A utility class for converting PDF files to different document formats.
+    
+    This class provides methods to extract text from PDF files and convert them
+    to various output formats such as TXT and DOC files. The converted files are
+    named based on the PDF's metadata title.
+    
+    Methods:
+        PDF_to_TXT(file_): Converts a PDF file to plain text format (.txt)
+        PDF_to_DOC(file_): Converts a PDF file to document format (.doc)
+    """
     
     # PDF TO TXT
     def PDF_to_TXT(file_=str):
@@ -20,9 +30,28 @@ class PDF_EXTRACT():
         
         with open(file_name_title, 'w') as file:
             file.write(extracted_text)
+    
+    # PDF TO DOC     
+    def PDF_to_DOC(file_=str):
+        """_summary_
+            CONVERTS PDFs TO DOCs
+        Args:
+            file_ (_type_, optional): name of file. Defaults to str.
+        """
+        file_reader = PdfReader(file_)
+        page_num = file_reader._get_num_pages()
+        extracted_text = ""
+        file_name_title = textcase.snake(file_reader.metadata.title) + '.doc'
+        file_name_title.strip()
+        for num in range(page_num):
+            text_ = file_reader.pages[num]
+            extracted_text += text_.extract_text()
+        
+        with open(file_name_title, 'w') as file:
+            file.write(extracted_text)
         
 
-def PDF_to_TXT(file_=str):
+def PDF_to_DOC(file_=str):
     """_summary_
         CONVERTS PDFs TO TXTs
     Args:
@@ -31,7 +60,7 @@ def PDF_to_TXT(file_=str):
     file_reader = PdfReader(file_)
     page_num = file_reader._get_num_pages()
     extracted_text = ""
-    file_name_title = textcase.snake(file_reader.metadata.title) + '.txt'
+    file_name_title = textcase.snake(file_reader.metadata.title) + '.doc'
     file_name_title.strip()
     for num in range(page_num):
         text_ = file_reader.pages[num]
@@ -42,5 +71,4 @@ def PDF_to_TXT(file_=str):
         
 
     
-new_file = PDF_EXTRACT
-new_file.PDF_to_TXT("pdf_dummi.pdf")
+PDF_to_DOC("pdf_dummi.pdf")
