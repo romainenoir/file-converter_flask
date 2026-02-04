@@ -40,8 +40,7 @@ class PDF_CONVERT():
         file_reader = PdfReader(file_)
         page_num = file_reader._get_num_pages()
         extracted_text = ""
-        file_name_title = textcase.snake(file_reader.metadata.title) + '.doc'
-        file_name_title.strip()
+        file_name_title = textcase.snake(file_reader.metadata.title.strip()) + '.doc'
         for num in range(page_num):
             text_ = file_reader.pages[num]
             extracted_text += text_.extract_text()
