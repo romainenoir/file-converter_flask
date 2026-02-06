@@ -12,7 +12,7 @@
 <h1>Upload A {{ file_type | upper() }} Document</h1>
 
 {% if file_type == "PDF" %}
-<form class="converter_form pdf_form", method="POST">
+<form class="converter_form pdf_form" method="POST" enctype="multipart/form-data">
     {{pdf_converter.hidden_tag()}}
     <p>{{pdf_converter.file_doc(class="file_field")}}</p>
 
@@ -23,7 +23,7 @@
 {% endif %}
 
 {% if file_type == "TXT" %}
-<form class="converter_form txt_form", method="POST">
+<form class="converter_form txt_form" method="POST" enctype="multipart/form-data">
     {{txt_converter.hidden_tag()}}
     <p>{{txt_converter.file_doc(class="file_field")}}</p>
 
@@ -34,7 +34,7 @@
 {% endif %}
 
 {% if file_type == "DOC" %}
-<form class="converter_form doc_form", method="POST">
+<form class="converter_form doc_form" method="POST" enctype="multipart/form-data">
     {{doc_converter.hidden_tag()}}
     <p>{{doc_converter.file_doc(class="file_field")}}</p>
 
@@ -45,7 +45,7 @@
 {% endif %}
 
 {%if file_type == "CSV" %}
-<form class="converter_form doc_form", method="POST">
+<form class="converter_form doc_form" method="POST" enctype="multipart/form-data">
     {{csv_converter.hidden_tag()}}
     <p>{{csv_converter.file_doc(class="file_field")}}</p>
 
