@@ -1,8 +1,9 @@
 from PyPDF2 import PdfReader
 import textcase
+import io
+
 
 # create function to extract text from PDF
-
 class PDF_CONVERT():
     """A utility class for converting PDF files to different document formats.
     
@@ -22,15 +23,19 @@ class PDF_CONVERT():
         file_reader = PdfReader(file_)
         page_num = file_reader._get_num_pages()
         extracted_text = ""
-        file_name_title = textcase.snake(file_reader.metadata.title.strip()) + '.txt'
+        title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
+        file_name_title = textcase.snake(title.strip()) + '.txt'
         for num in range(page_num):
             text_ = file_reader.pages[num]
             extracted_text += text_.extract_text()
-        
-        with open(file_name_title, 'w') as file:
-            file.write(extracted_text)
+
+        # Use in-memory file
+        file_stream = io.BytesIO()
+        file_stream.write(extracted_text.encode('utf-8'))
+        file_stream.seek(0)
+        return file_stream, file_name_title
     
-    # PDF TO DOC     
+    # PDF TO DOC
     def PDF_to_DOC(self, file_=str):
         """_summary_
             CONVERTS PDFs TO DOCs
@@ -40,11 +45,15 @@ class PDF_CONVERT():
         file_reader = PdfReader(file_)
         page_num = file_reader._get_num_pages()
         extracted_text = ""
-        file_name_title = textcase.snake(file_reader.metadata.title.strip()) + '.doc'
+        title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
+        file_name_title = textcase.snake(title.strip()) + '.doc'
         for num in range(page_num):
             text_ = file_reader.pages[num]
             extracted_text += text_.extract_text()
-        
-        with open(file_name_title, 'w') as file:
-            file.write(extracted_text)
+
+        # Use in-memory file
+        file_stream = io.BytesIO()
+        file_stream.write(extracted_text.encode('utf-8'))
+        file_stream.seek(0)
+        return file_stream, file_name_title
 
