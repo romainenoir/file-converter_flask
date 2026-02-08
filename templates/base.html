@@ -12,22 +12,19 @@
     <body class="content">
         <div class="navbar">
             <a href="/">FlipMyFile</a>
-            |
             <a href="/">Home</a>
-            |
             <a href="/convert/PDF">Convert</a>
-            |
             <a href="/about">About</a>
         </div>
-        <div class="jinja_block">
-            {% block content %}
-            {% endblock %}
-        </div>
-       
+        
+        {% block content %}
+        {% endblock %}
     </body>
     <hr>
-    <footer class="footer">
-        <p id="credits">Created By <a href="https://github.com/romainenoir" id="github_link">Romaine Noir</a></p>
-        <a href="https://github.com/romainenoir"><img src="/static/images/Github-Logo-PNG-File-1.png" alt="Github Page" id="github_icon"></a>
+    <footer >
+        <div class="footer">
+            <p id="credits">Created By Romaine Noir</p>
+            <a href="https://github.com/romainenoir" id="github_link"><img src="/static/images/Github-Logo-PNG-File-1.png" alt="Github Page" id="github_icon"></a>
+        </div>
     </footer>
 </html>

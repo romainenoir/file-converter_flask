@@ -1,7 +1,10 @@
 * {
     background-color: #0D1F23;
-    color: #69818D;
-    
+    color: #69818D; 
+}
+
+hr {
+    opacity: 0;
 }
 
 .navbar, .convert-nav{
@@ -11,38 +14,50 @@
 
 .content{
     width: 89%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
-.jinja_block {
+.convert_block {
     width: 80%;
     padding: 30px;
     text-align: center;
-    justify-content: space-evenly;
-}
-
-form {
-    display: flex;
     justify-content: center;
+    padding-top: 20%;
+    padding-bottom: 10%;
 }
 
-form {
-    display: inline-block;
-    border: 24px, 16px;
-    text-align: justify;
+.form_actions {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
 }
 
-footer {
-    display: flow-root;
+.form_button {
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    border-radius: 10px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
     text-align: center;
 }
 
 #github_icon {
     display: block;
     margin-right: auto;
-    width: 20px;
+    width: 33px;
     opacity: 0.5;
+}
+
+#github_link {
+    width: auto;
+    height: 33px;
+    display: flex;
+    justify-content: center;
 }
 
 #github_icon:hover {
