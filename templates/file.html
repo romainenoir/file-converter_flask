@@ -4,11 +4,11 @@
 
 <div class="convert-nav">
 {% for file_dot, file_name in file_types.items() %}
-<a href="{{ url_for('convert', file_type=file_name) }}">{{ file_name }}</a>
+<a href="{{ url_for('convert', file_type=file_name) }}" class="nav_link">{{ file_name }}</a>
 {% endfor %}   
 </div>
 
-<div class="convert_block">
+<div class="content_block_conversion">
     <h1>Upload A {{ file_type | upper() }} Document</h1>
 
     {% if file_type == "PDF" %}
@@ -27,7 +27,7 @@
     {% if file_type == "TXT" %}
     <form class="converter_form txt_form" method="POST" enctype="multipart/form-data">
         {{txt_converter.hidden_tag()}}
-        <p>{{txt_converter.file_doc(class="file_field")}}</p>
+        <p>{{txt_converter.file_doc(class="form_button")}}</p>
 
         <div class="form_actions">
             <p>{{txt_converter.convert_to_pdf(class="form_button")}}</p>
@@ -40,7 +40,7 @@
     {% if file_type == "DOC" %}
     <form class="converter_form doc_form" method="POST" enctype="multipart/form-data">
         {{doc_converter.hidden_tag()}}
-        <p>{{doc_converter.file_doc(class="file_field")}}</p>
+        <p>{{doc_converter.file_doc(class="form_button")}}</p>
 
         <div class="form_actions">
             <p>{{doc_converter.convert_to_pdf(class="form_button")}}</p>
@@ -54,7 +54,7 @@
     {%if file_type == "CSV" %}
     <form class="converter_form doc_form" method="POST" enctype="multipart/form-data">
         {{csv_converter.hidden_tag()}}
-        <p>{{csv_converter.file_doc(class="file_field")}}</p>
+        <p>{{csv_converter.file_doc(class="form_button")}}</p>
 
         <div class="form_actions">
             <p>{{csv_converter.convert_to_txt(class="form_button")}}</p>
@@ -62,7 +62,8 @@
             <p>{{csv_converter.convert_to_pdf(class="form_button")}}</p>
         </div>
     </form>
+    {% endif %}
 </div>
-{% endif %}
+
 
 {% endblock %}

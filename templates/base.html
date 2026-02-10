@@ -11,10 +11,13 @@
     </head>
     <body class="content">
         <div class="navbar">
-            <a href="/">FlipMyFile</a>
-            <a href="/">Home</a>
-            <a href="/convert/PDF">Convert</a>
-            <a href="/about">About</a>
+            <a href="/" class="nav_logo">FlipMyFile</a>
+            <div class="nav_links">
+                <a href="/" class="nav_link">Home</a>
+                <a href="/convert/PDF" class="nav_link">Convert</a>
+                <a href="/about" class="nav_link">About</a>
+            </div>
+            
         </div>
         
         {% block content %}
@@ -23,8 +26,12 @@
     <hr>
     <footer >
         <div class="footer">
-            <p id="credits">Created By Romaine Noir</p>
-            <a href="https://github.com/romainenoir" id="github_link"><img src="/static/images/Github-Logo-PNG-File-1.png" alt="Github Page" id="github_icon"></a>
+            <div class="credits_div">
+                <p id="credits">Created By Romaine Noir</p>
+            </div>
+            <div class="social_links_row">
+                <a href="https://github.com/romainenoir"><img src="/static/images/github_edge-icon.png" alt="Github Page" class="social_link"></a>
+            </div>
         </div>
     </footer>
 </html>
