@@ -33,6 +33,7 @@ hr {
 
 .nav_link:hover {
     border: 1.5px solid rgb(255, 255, 255);
+    transition-duration: 0.5s;
 }
 
 /* WEBPAGE CONTENT */
@@ -66,6 +67,7 @@ hr {
 
 .form_button:hover {
     border: 1.5px solid rgb(255, 255, 255, 1);
+    transition-duration: 0.5s;
 }
 
 /* FOOTER */
@@ -87,6 +89,7 @@ hr {
 
 .social_link:hover {
     opacity: 1;
+    transition-duration: 0.5s;
 }
 
 .social_link:active {
