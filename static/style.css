@@ -13,7 +13,7 @@
 }
 
 * {
-    background-color: #0D1F23;
+    background-color: #00171F;
     color: #69818D;
     box-sizing: border-box;
     font-family: "Eurostile";
@@ -29,6 +29,7 @@ hr {
 
 h1 {
     font-size: 30px;
+    font-weight: bold;
 }
 
 /*NAVIGATION BAR*/
@@ -53,6 +54,11 @@ h1 {
     border: 1.5px solid rgb(255, 255, 255);
     background-color: #16353b;
     transition-duration: 0.5s;
+}
+
+.nav_link:active {
+    border: 1.5px solid rgba(255, 255, 255, 0.079);
+    background-color: #16353b1a;
 }
 
 /* WEBPAGE CONTENT */
@@ -90,6 +96,11 @@ h1 {
     transition-duration: 0.5s; 
 }
 
+.form_button:active {
+    border: 1.5px solid rgba(255, 255, 255, 0.079);
+    background-color: #16353b1a;
+}
+
 /* FOOTER */
 .footer {
     width: 800px ;
@@ -113,6 +124,6 @@ h1 {
 }
 
 .social_link:active {
-    color: #ffffff;
+    color: #000000;
 }
  
