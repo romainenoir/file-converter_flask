@@ -35,12 +35,12 @@ h1 {
 /*NAVIGATION BAR*/
 .navbar, .convert-nav{
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .nav_links {
-    justify-content: space-evenly;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .nav_link {
