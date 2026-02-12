@@ -33,10 +33,11 @@ h1 {
 }
 
 /*NAVIGATION BAR*/
-.navbar, .convert-nav{
+.navbar {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
+    margin-right: 40px;
+    margin-left: 40px;
 }
 
 .nav_links {
@@ -45,6 +46,8 @@ h1 {
 }
 
 .convert-nav{
+    display: flex;
+    justify-content: space-evenly;
     margin-left: 550px;
     margin-right: 550px;
 }
@@ -54,6 +57,7 @@ h1 {
     padding: 5px;
     border: 1.5px solid rgba(255, 255, 255, 0.10);
     border-radius: 10px;
+    transition-duration: 0.5s;
 }
 
 .nav_link:hover {
@@ -94,6 +98,7 @@ h1 {
     padding: 20px;
     border: 1.5px solid rgb(255, 255, 255, 0.10);
     border-radius: 10px;
+    transition-duration: 0.5s;
 }
 
 .form_button:hover {
@@ -122,6 +127,7 @@ h1 {
     padding: auto;
     width: 30px;
     opacity: 0.5;
+    transition-duration: 0.5s;
 }
 
 .social_link:hover {
