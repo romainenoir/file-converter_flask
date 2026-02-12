@@ -43,6 +43,11 @@ h1 {
     margin-bottom: 15px;
 }
 
+.convert-nav{
+    margin-left: 550px;
+    margin-right: 550px;
+}
+
 .nav_link {
     width: fit-content;
     padding: 5px;
