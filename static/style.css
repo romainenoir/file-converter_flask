@@ -24,7 +24,7 @@ a {
 }
 
 hr {
-    opacity: 0;
+    opacity: 0.02;
 }
 
 h1 {
@@ -46,7 +46,7 @@ h1 {
 }
 
 .convert-nav{
-    display: flex;
+    display: flex; 
     justify-content: space-evenly;
     margin-left: 550px;
     margin-right: 550px;
