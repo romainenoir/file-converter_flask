@@ -78,3 +78,9 @@ class PDF_CONVERT():
         file_stream.seek(0)
         return file_stream, file_name_title
             
+def TXT_to_PDF(file_):
+    """Convert Txt into PDFs
+
+    Args:
+        file_ (_type_): _description_
+    """
