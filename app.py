@@ -28,11 +28,15 @@ def convert(file_type):
         if pdf_converter.convert_to_txt.data:
             file_stream, file_name_title = convert_pdf_.PDF_to_TXT(user_upload)
             return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
+        
         elif pdf_converter.convert_to_doc.data:
             file_stream, file_name_title = convert_pdf_.PDF_to_DOC(user_upload)
             return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
+        
         elif pdf_converter.convert_to_csv.data:
-            pass
+            file_stream, file_name_title = convert_pdf_.PDF_to_CSV(user_upload)
+            return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
+        
     elif txt_converter.validate_on_submit():
         user_upload = txt_converter.file_doc.data
         pass

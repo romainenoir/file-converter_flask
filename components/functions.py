@@ -57,3 +57,24 @@ class PDF_CONVERT():
         file_stream.seek(0)
         return file_stream, file_name_title
 
+    def PDF_to_CSV(self, file_):
+        """_summary_
+            CONVERTS PDFs TO CSVs
+        Args:
+            file_ (_type_, optional): name of file. Defaults to str.
+        """
+        file_reader = PdfReader(file_)
+        page_num = file_reader._get_num_pages()
+        extracted_text = ""
+        title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
+        file_name_title = textcase.snake(title.strip()) + '.csv'
+        for num in range(page_num):
+            text_ = file_reader.pages[num]
+            extracted_text += text_.extract_text()
+        
+        # in-memory file logic for security 
+        file_stream = io.BytesIO()
+        file_stream.write(extracted_text.encode('utf-8'))
+        file_stream.seek(0)
+        return file_stream, file_name_title
+            
