@@ -139,3 +139,12 @@ h1 {
     color: #000000;
 }
  
+#credits_name {
+    opacity: 0.5;
+    transition-duration: 0.5s;
+}
+
+#credits_name:hover {
+    opacity: 1;
+    transition-duration: 0.5s;
+}
