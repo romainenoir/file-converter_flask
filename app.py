@@ -44,6 +44,9 @@ def convert(file_type):
         if txt_converter_form.convert_to_pdf.data:
             file_stream, file_name_title, = convert_txt_.TXT_to_PDF(user_upload)
             return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
+        elif txt_converter_form.convert_to_doc.data:
+            file_stream, file_name_title = convert_txt_.TXT_to_DOC(user_upload)
+            return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
     elif csv_converter_form.validate_on_submit():
         user_upload = csv_converter_form.file_doc.data
         pass
