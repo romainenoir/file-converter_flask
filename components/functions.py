@@ -135,9 +135,34 @@ class TXT_CONVERT():
         return file_stream, file_name_title
         
     def TXT_to_DOC(self, file_=str):
-        
+        """_summary_
+            Converts .txt into .doc
+        Args:
+            file_ (_type_, optional): _description_. Defaults to str.
+        Returns:
+            _type_: _description_
+        """
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.doc'
+        
+        file_.seek(0)
+        extracted_text = file_.read().decode('utf-8')
+        
+        file_stream = io.BytesIO()
+        file_stream.write(extracted_text.encode('utf-8'))
+        file_stream.seek(0)
+        return file_stream, file_name_title
+    
+    def TXT_to_CSV(self, file_=str):
+        """_summary_
+            Converts .txt into .csv
+        Args:
+            file_ (_type_, optional): _description_. Defaults to str.
+        Returns:
+            _type_: _description_
+        """
+        title = file_.filename.rsplit('.', 1)[0]
+        file_name_title =  textcase.snake(title.strip()) + '.csv'
         
         file_.seek(0)
         extracted_text = file_.read().decode('utf-8')
