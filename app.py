@@ -58,6 +58,12 @@ def convert(file_type):
         if csv_converter_form.convert_to_pdf.data:
             file_stream, file_name_title = convert_csv_.CSV_to_PDF(user_upload)
             return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
+        elif csv_converter_form.convert_to_doc.data:
+            file_stream, file_name_title = convert_csv_.CSV_to_DOC(user_upload)
+            return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
+        elif csv_converter_form.convert_to_txt.data:
+            file_stream, file_name_title = convert_csv_.CSV_to_TXT(user_upload)
+            return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
     elif doc_converter_form.validate_on_submit():
         user_upload = doc_converter_form.file_doc.data
         pass

@@ -172,14 +172,10 @@ class TXT_CONVERT():
         file_stream.seek(0)
         return file_stream, file_name_title
  
-class CSV_CONVERT():   
+class CSV_CONVERT():
+    """_summary_
+    """
     def CSV_to_PDF(self, file_):
-        """
-
-        Args:
-            file_ (_type_): _description_
-        """
-        #get title from filename
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.pdf'
         
@@ -201,4 +197,28 @@ class CSV_CONVERT():
         file_stream = io.BytesIO(pdf_output)
         file_stream.seek(0)
         
+        return file_stream, file_name_title
+    
+    def CSV_to_DOC(self, file_=str):
+        title = file_.filename.rsplit('.', 1)[0]
+        file_name_title =  textcase.snake(title.strip()) + '.doc'
+        
+        file_.seek(0)
+        extracted_text = file_.read().decode('utf-8')
+        
+        file_stream = io.BytesIO()
+        file_stream.write(extracted_text.encode('utf-8'))
+        file_stream.seek(0)
+        return file_stream, file_name_title
+    
+    def CSV_to_TXT(self, file_=str):
+        title = file_.filename.rsplit('.', 1)[0]
+        file_name_title =  textcase.snake(title.strip()) + '.txt'
+        
+        file_.seek(0)
+        extracted_text = file_.read().decode('utf-8')
+        
+        file_stream = io.BytesIO()
+        file_stream.write(extracted_text.encode('utf-8'))
+        file_stream.seek(0)
         return file_stream, file_name_title
