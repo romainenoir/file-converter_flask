@@ -70,7 +70,13 @@ def convert(file_type):
         
         if doc_converter_form.convert_to_pdf.data:
             file_stream, file_name_title = convert_doc_.DOC_to_PDF(user_upload)
-            return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title) 
+            return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
+        elif doc_converter_form.convert_to_csv.data:
+            file_stream, file_name_title = convert_doc_.DOC_to_CSV(user_upload)
+            return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
+        elif doc_converter_form.convert_to_txt.data:
+            file_stream, file_name_title = convert_doc_.DOC_to_TXT(user_upload)
+            return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
     return render_template("file.html", file_types=file_types, 
                            file_type=file_type, 
                            doc_converter_form=doc_converter_form,
