@@ -222,3 +222,32 @@ class CSV_CONVERT():
         file_stream.write(extracted_text.encode('utf-8'))
         file_stream.seek(0)
         return file_stream, file_name_title
+    
+class DOC_CONVERT():
+    """_summary_
+    """
+    
+    def DOC_to_PDF(self, file_):
+        title = file_.filename.rsplit('.', 1)[0]
+        file_name_title =  textcase.snake(title.strip()) + '.pdf'
+        
+        file_.seek(0)
+        extracted_text = file_.read().decode('utf-8')
+        
+        pdf_object = FPDF()
+        pdf_object.add_page()
+        
+        pdf_object.set_font("Arial", size=12)
+        
+        pdf_object.multi_cell(0, 10, text=str(extracted_text))
+        
+        pdf_output = pdf_object.output(dest='S')
+        if isinstance(pdf_output, str):
+            pdf_output = pdf_output.encode('latin-1')
+            
+        # use in-memory file
+        file_stream = io.BytesIO(pdf_output)
+        file_stream.seek(0)
+        
+        return file_stream, file_name_title
+        

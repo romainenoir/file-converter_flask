@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, send_file
 from components.data import file_types
 from components.forms import DOCConvert, PDFConvert, TXTConvert, CSVConvert
-from components.functions import PDF_CONVERT, TXT_CONVERT, CSV_CONVERT
+from components.functions import PDF_CONVERT, TXT_CONVERT, CSV_CONVERT, DOC_CONVERT
 from config import app_config_key
 
 app = Flask(__name__)
@@ -65,8 +65,12 @@ def convert(file_type):
             file_stream, file_name_title = convert_csv_.CSV_to_TXT(user_upload)
             return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
     elif doc_converter_form.validate_on_submit():
+        convert_doc_ = DOC_CONVERT()
         user_upload = doc_converter_form.file_doc.data
-        pass
+        
+        if doc_converter_form.convert_to_pdf.data:
+            file_stream, file_name_title = convert_doc_.DOC_to_PDF(user_upload)
+            return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title) 
     return render_template("file.html", file_types=file_types, 
                            file_type=file_type, 
                            doc_converter_form=doc_converter_form,
