@@ -6,8 +6,14 @@ import io
 
 # create function to extract text from PDF
 class PDF_CONVERT():
+    """
+    Handles conversion from PDF to other text-based formats.
+    """
     # PDF TO TXT
     def PDF_to_TXT(self, file_=str):
+        """
+        Extracts text from a PDF file and returns it as a TXT file stream.
+        """
         file_reader = PdfReader(file_)
         page_num = file_reader._get_num_pages()
         extracted_text = ""
@@ -25,6 +31,9 @@ class PDF_CONVERT():
     
     # PDF TO DOC
     def PDF_to_DOC(self, file_=str):
+        """
+        Extracts text from a PDF file and returns it as a DOC file stream.
+        """
         file_reader = PdfReader(file_)
         page_num = file_reader._get_num_pages()
         extracted_text = ""
@@ -41,6 +50,9 @@ class PDF_CONVERT():
         return file_stream, file_name_title
 
     def PDF_to_CSV(self, file_=str):
+        """
+        Extracts text from a PDF file and returns it as a CSV file stream.
+        """
         file_reader = PdfReader(file_)
         page_num = file_reader._get_num_pages()
         extracted_text = ""
@@ -57,8 +69,14 @@ class PDF_CONVERT():
         return file_stream, file_name_title
   
 class TXT_CONVERT(): 
+    """
+    Handles conversion from TXT to other formats.
+    """
              
     def TXT_to_PDF(self, file_=str):
+        """
+        Converts a TXT file to a PDF file stream.
+        """
         #get title from filename
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.pdf'
@@ -93,6 +111,9 @@ class TXT_CONVERT():
         return file_stream, file_name_title
         
     def TXT_to_DOC(self, file_=str):
+        """
+        Converts a TXT file to a DOC file stream.
+        """
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.doc'
         
@@ -105,6 +126,9 @@ class TXT_CONVERT():
         return file_stream, file_name_title
     
     def TXT_to_CSV(self, file_=str):
+        """
+        Converts a TXT file to a CSV file stream.
+        """
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.csv'
         
@@ -117,7 +141,13 @@ class TXT_CONVERT():
         return file_stream, file_name_title
  
 class CSV_CONVERT():
+    """
+    Handles conversion from CSV to other formats.
+    """
     def CSV_to_PDF(self, file_):
+        """
+        Converts a CSV file to a PDF file stream.
+        """
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.pdf'
         
@@ -142,6 +172,9 @@ class CSV_CONVERT():
         return file_stream, file_name_title
     
     def CSV_to_DOC(self, file_=str):
+        """
+        Converts a CSV file to a DOC file stream.
+        """
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.doc'
         
@@ -154,6 +187,9 @@ class CSV_CONVERT():
         return file_stream, file_name_title
     
     def CSV_to_TXT(self, file_=str):
+        """
+        Converts a CSV file to a TXT file stream.
+        """
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.txt'
         
@@ -166,10 +202,14 @@ class CSV_CONVERT():
         return file_stream, file_name_title
     
 class DOC_CONVERT():
-    """_summary_
+    """
+    Handles conversion from DOC to other formats.
     """
     
     def DOC_to_PDF(self, file_):
+        """
+        Converts a DOC file to a PDF file stream.
+        """
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.pdf'
         
@@ -194,6 +234,9 @@ class DOC_CONVERT():
         return file_stream, file_name_title
         
     def DOC_to_TXT(self, file_=str):
+        """
+        Converts a DOC file to a TXT file stream.
+        """
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.txt'
         
@@ -206,6 +249,9 @@ class DOC_CONVERT():
         return file_stream, file_name_title
     
     def DOC_to_CSV(self, file_=str):
+        """
+        Converts a DOC file to a CSV file stream.
+        """
         title = file_.filename.rsplit('.', 1)[0]
         file_name_title =  textcase.snake(title.strip()) + '.csv'
         
