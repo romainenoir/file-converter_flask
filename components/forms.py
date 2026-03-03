@@ -5,7 +5,7 @@ from flask_wtf.file import FileRequired, FileAllowed
 '''Flask Forms For Application'''
 
 # create a form for converting files in txt format
-class TXTConvert(FlaskForm):
+class TXTConvertForm(FlaskForm):
     '''a form for converting files in txt format'''
     file_doc = FileField("Upload TXT", validators=[
         FileRequired(),
@@ -16,7 +16,7 @@ class TXTConvert(FlaskForm):
     convert_to_doc = SubmitField("Convert To .doc File")
     
 # create a form for converting files in doc format
-class DOCConvert(FlaskForm):
+class DOCConvertForm(FlaskForm):
     '''a form for converting files in doc format'''
     file_doc = FileField("Upload DOC", validators=[
         FileRequired(),
@@ -27,7 +27,7 @@ class DOCConvert(FlaskForm):
     convert_to_csv = SubmitField("Convert To .csv File")
 
 # create a form for converting files in pdf format
-class PDFConvert(FlaskForm):
+class PDFConvertForm(FlaskForm):
     '''a form for converting files in pdf format'''
     file_doc = FileField("Upload PDF", validators=[
         FileRequired(),
@@ -38,7 +38,7 @@ class PDFConvert(FlaskForm):
     convert_to_doc = SubmitField("Convert To .doc File")
 
 # create a form for converting files in csv format
-class CSVConvert(FlaskForm):
+class CSVConvertForm(FlaskForm):
     '''a form for converting files in csv format'''
     file_doc = FileField("Upload CSV", validators=[
         FileRequired(),

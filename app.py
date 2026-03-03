@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, send_file
 from components.data import file_types
-from components.forms import DOCConvert, PDFConvert, TXTConvert, CSVConvert
+from components.forms import DOCConvertForm, PDFConvertForm, TXTConvertForm, CSVConvertForm
 from components.functions import PDF_CONVERT, TXT_CONVERT, CSV_CONVERT, DOC_CONVERT
 from config import app_config_key
 
@@ -15,10 +15,10 @@ def homepage():
 def convert(file_type):
     file_type = file_type.upper()
     user_upload = None
-    doc_converter_form = DOCConvert()
-    pdf_converter_form = PDFConvert()
-    txt_converter_form = TXTConvert()
-    csv_converter_form = CSVConvert()
+    doc_converter_form = DOCConvertForm()
+    pdf_converter_form = PDFConvertForm()
+    txt_converter_form = TXTConvertForm()
+    csv_converter_form = CSVConvertForm()
     
     if pdf_converter_form.validate_on_submit():
         convert_pdf_ = PDF_CONVERT()
