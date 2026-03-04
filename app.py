@@ -2,10 +2,13 @@ from flask import Flask, render_template, redirect, send_file
 from components.data import file_types
 from components.forms import DOCConvertForm, PDFConvertForm, TXTConvertForm, CSVConvertForm
 from components.functions import PDF_CONVERT, TXT_CONVERT, CSV_CONVERT, DOC_CONVERT
-from config import app_config_key
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = app_config_key
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
 @app.route('/homepage')
 def homepage():
