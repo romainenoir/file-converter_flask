@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, send_file
+from flask import Flask, render_template, redirect, send_file, flash, request
 from components.data import file_types
 from components.forms import DOCConvertForm, PDFConvertForm, TXTConvertForm, CSVConvertForm
 from components.functions import PDF_CONVERT, TXT_CONVERT, CSV_CONVERT, DOC_CONVERT
@@ -30,14 +30,28 @@ def convert(file_type):
         # CONVERT PDF & SEND BACK TO USER
         if pdf_converter_form.convert_to_txt.data:
             file_stream, file_name_title = convert_pdf_.PDF_to_TXT(user_upload)
+            
+            # ERROR CHECKING
+            if file_stream is None:
+                flash(file_name_title, "error") # file_name_title contains error message
+                return redirect(request.url)
+            
             return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
-        
         elif pdf_converter_form.convert_to_doc.data:
             file_stream, file_name_title = convert_pdf_.PDF_to_DOC(user_upload)
+            
+            if file_stream is None:
+                flash(file_name_title, "error") # file_name_title contains error message
+                return redirect(request.url)
+            
             return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
-        
         elif pdf_converter_form.convert_to_csv.data:
             file_stream, file_name_title = convert_pdf_.PDF_to_CSV(user_upload)
+            
+            if file_stream is None:
+                flash(file_name_title, "error") # file_name_title contains error message
+                return redirect(request.url)
+            
             return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)   
     elif txt_converter_form.validate_on_submit():
         convert_txt_ = TXT_CONVERT()
@@ -80,6 +94,10 @@ def convert(file_type):
         elif doc_converter_form.convert_to_txt.data:
             file_stream, file_name_title = convert_doc_.DOC_to_TXT(user_upload)
             return send_file(path_or_file=file_stream, as_attachment=True, download_name=file_name_title)
+    
+    if request.method == 'POST':
+        flash("There was an error with your file upload. Please check the requirements.", "error")
+
     return render_template("file.html", file_types=file_types, 
                            file_type=file_type, 
                            doc_converter_form=doc_converter_form,

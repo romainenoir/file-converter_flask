@@ -1,4 +1,5 @@
-from PyPDF2 import PdfReader, PdfWriter #used for for exsisting pdfs
+from PyPDF2 import PdfReader #used for for exsisting pdf
+from PyPDF2.errors import PdfReadError, FileNotDecryptedError
 from fpdf import FPDF #used to create new pdf
 import textcase
 import io
@@ -14,59 +15,89 @@ class PDF_CONVERT():
         """
         Extracts text from a PDF file and returns it as a TXT file stream.
         """
-        file_reader = PdfReader(file_)
-        page_num = file_reader._get_num_pages()
-        extracted_text = ""
-        title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
-        file_name_title = textcase.snake(title.strip()) + '.txt'
-        for num in range(page_num):
-            text_ = file_reader.pages[num]
-            extracted_text += text_.extract_text()
+        try:
+            file_reader = PdfReader(file_)
+            page_num = file_reader._get_num_pages()
+            extracted_text = ""
+            title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
+            file_name_title = textcase.snake(title.strip()) + '.txt'
+            for num in range(page_num):
+                text_ = file_reader.pages[num]
+                extracted_text += text_.extract_text()
 
-        # Use in-memory file
-        file_stream = io.BytesIO()
-        file_stream.write(extracted_text.encode('utf-8'))
-        file_stream.seek(0)
-        return file_stream, file_name_title
+            # Use in-memory file
+            file_stream = io.BytesIO()
+            file_stream.write(extracted_text.encode('utf-8'))
+            file_stream.seek(0)
+            return file_stream, file_name_title
+        except PdfReadError:
+            error_message = "Error: The PDF file is corrupted or invalid."
+            return None, error_message
+        except FileNotDecryptedError:
+            error_message = "Error: PDF document not decrypted"
+            return None, error_message
+        except Exception as e:
+            error_message = f"Error: {e}"
+            return None, error_message
     
     # PDF TO DOC
     def PDF_to_DOC(self, file_=str):
         """
         Extracts text from a PDF file and returns it as a DOC file stream.
         """
-        file_reader = PdfReader(file_)
-        page_num = file_reader._get_num_pages()
-        extracted_text = ""
-        title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
-        file_name_title = textcase.snake(title.strip()) + '.doc'
-        for num in range(page_num):
-            text_ = file_reader.pages[num]
-            extracted_text += text_.extract_text()
+        try:
+            file_reader = PdfReader(file_)
+            page_num = file_reader._get_num_pages()
+            extracted_text = ""
+            title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
+            file_name_title = textcase.snake(title.strip()) + '.doc'
+            for num in range(page_num):
+                text_ = file_reader.pages[num]
+                extracted_text += text_.extract_text()
 
-        # Use in-memory file
-        file_stream = io.BytesIO()
-        file_stream.write(extracted_text.encode('utf-8'))
-        file_stream.seek(0)
-        return file_stream, file_name_title
+            # Use in-memory file
+            file_stream = io.BytesIO()
+            file_stream.write(extracted_text.encode('utf-8'))
+            file_stream.seek(0)
+            return file_stream, file_name_title
+        except PdfReadError:
+            error_message = "Error: The PDF file is corrupted or invalid."
+            return None, error_message
+        except FileNotDecryptedError:
+            error_message = "Error: PDF document not decrypted"
+            return None, error_message
+        except Exception as e:
+            error_message = f"Error: {e}"
+            return None, error_message
 
     def PDF_to_CSV(self, file_=str):
         """
         Extracts text from a PDF file and returns it as a CSV file stream.
         """
-        file_reader = PdfReader(file_)
-        page_num = file_reader._get_num_pages()
-        extracted_text = ""
-        title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
-        file_name_title = textcase.snake(title.strip()) + '.csv'
-        for num in range(page_num):
-            text_ = file_reader.pages[num]
-            extracted_text += text_.extract_text()
-        
-        # in-memory file logic for security 
-        file_stream = io.BytesIO()
-        file_stream.write(extracted_text.encode('utf-8'))
-        file_stream.seek(0)
-        return file_stream, file_name_title
+        try:
+            file_reader = PdfReader(file_)
+            page_num = file_reader._get_num_pages()
+            extracted_text = ""
+            title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
+            file_name_title = textcase.snake(title.strip()) + '.csv'
+            for num in range(page_num):
+                text_ = file_reader.pages[num]
+                extracted_text += text_.extract_text()
+            
+            # in-memory file logic for security 
+            file_stream = io.BytesIO()
+            file_stream.write(extracted_text.encode('utf-8'))
+            file_stream.seek(0)
+            return file_stream, file_name_title
+        except PdfReadError:
+            error_message = "Error: The PDF file is corrupted or invalid."
+            return None, error_message
+        except FileNotDecryptedError:
+            error_message = "Error: PDF document not decrypted"
+            return None, error_message
+        except Exception as e:
+            error_message = f"Error: {e}"
+            return None, error_message
   
 class TXT_CONVERT(): 
     """

@@ -9,13 +9,29 @@
 </div>
 <hr>
 
+<div class="error-message-block">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flashes">
+              {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+    {% endwith %}
+</div>
+
 <div class="content_block_conversion">
     <h1>Upload A {{ file_type | upper() }} Document</h1>
 
     {% if file_type == "PDF" %}
     <form class="converter_form pdf_form" method="POST" enctype="multipart/form-data">
         {{pdf_converter_form.hidden_tag()}}
-        <p>{{pdf_converter_form.file_doc(class="form_button")}}</p>
+        <p>{{pdf_converter_form.file_doc(class="form_button")}}
+        {% for error in pdf_converter_form.file_doc.errors %}
+            <span class="error-message">[{{ error }}]</span>
+        {% endfor %}
+        </p>
 
         <div class="form_actions">
             <p>{{pdf_converter_form.convert_to_txt(class="form_button")}}</p>
@@ -28,7 +44,11 @@
     {% if file_type == "TXT" %}
     <form class="converter_form txt_form" method="POST" enctype="multipart/form-data">
         {{txt_converter_form.hidden_tag()}}
-        <p>{{txt_converter_form.file_doc(class="form_button")}}</p>
+        <p>{{txt_converter_form.file_doc(class="form_button")}}
+        {% for error in txt_converter_form.file_doc.errors %}
+            <span class="error-message">[{{ error }}]</span>
+        {% endfor %}
+        </p>
 
         <div class="form_actions">
             <p>{{txt_converter_form.convert_to_pdf(class="form_button")}}</p>
@@ -41,7 +61,11 @@
     {% if file_type == "DOC" %}
     <form class="converter_form doc_form" method="POST" enctype="multipart/form-data">
         {{doc_converter_form.hidden_tag()}}
-        <p>{{doc_converter_form.file_doc(class="form_button")}}</p>
+        <p>{{doc_converter_form.file_doc(class="form_button")}}
+        {% for error in doc_converter_form.file_doc.errors %}
+            <span class="error-message">[{{ error }}]</span>
+        {% endfor %}
+        </p>
 
         <div class="form_actions">
             <p>{{doc_converter_form.convert_to_pdf(class="form_button")}}</p>
@@ -55,7 +79,11 @@
     {%if file_type == "CSV" %}
     <form class="converter_form doc_form" method="POST" enctype="multipart/form-data">
         {{csv_converter_form.hidden_tag()}}
-        <p>{{csv_converter_form.file_doc(class="form_button")}}</p>
+        <p>{{csv_converter_form.file_doc(class="form_button")}}
+        {% for error in csv_converter_form.file_doc.errors %}
+            <span class="error-message">[{{ error }}]</span>
+        {% endfor %}
+        </p>
 
         <div class="form_actions">
             <p>{{csv_converter_form.convert_to_txt(class="form_button")}}</p>
