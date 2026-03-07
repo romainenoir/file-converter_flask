@@ -123,7 +123,9 @@ class TXT_CONVERT():
         pdf_object.add_page()
         
         # Set font (required before writing)
-        pdf_object.set_font("Arial", size=12)
+        font_path = "static/fonts/DejaVuSans.ttf"
+        pdf_object.add_font("DejaVu", style="", fname=font_path)
+        pdf_object.set_font("DejaVu", size=12)
         
         # Write text using multi_cell for automatic line wrapping
         # 0 = full width of a page; 10 = line height
@@ -188,7 +190,9 @@ class CSV_CONVERT():
         pdf_object = FPDF()
         pdf_object.add_page()
         
-        pdf_object.set_font("Arial", size=12)
+        font_path = "static/fonts/DejaVuSans.ttf"
+        pdf_object.add_font("DejaVu", style="", fname=font_path)
+        pdf_object.set_font("DejaVu", size=12)
         
         pdf_object.multi_cell(0, 10, text=str(extracted_text))
         
@@ -250,7 +254,9 @@ class DOC_CONVERT():
         pdf_object = FPDF()
         pdf_object.add_page()
         
-        pdf_object.set_font("Arial", size=12)
+        font_path = "static/fonts/DejaVuSans.ttf"
+        pdf_object.add_font("DejaVu", style="", fname=font_path)
+        pdf_object.set_font("DejaVu", size=12)
         
         pdf_object.multi_cell(0, 10, text=str(extracted_text))
         
