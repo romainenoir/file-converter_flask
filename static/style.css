@@ -112,6 +112,32 @@ h1 {
     background-color: #16353b1a;
 }
 
+.error-message {
+    color: crimson;
+    font-size: 0.9em;
+    margin-left: 10px;
+}
+
+/* FLASH MESSAGES */
+.flashes {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.flash {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #16353b;
+    border: 1px solid #FBF9E4;
+}
+
+.flash.error {
+    color: crimson;
+    border-color: crimson;
+}
+
 /* FOOTER */
 .footer {
     width: 800px ;
