@@ -1,5 +1,6 @@
 from PyPDF2 import PdfReader #used for for exsisting pdf
 from PyPDF2.errors import PdfReadError, FileNotDecryptedError
+from werkzeug.utils import secure_filename
 from fpdf import FPDF #used to create new pdf
 import textcase
 import io
@@ -20,7 +21,8 @@ class PDF_CONVERT():
             page_num = len(file_reader.pages)
             extracted_text = ""
             title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
-            file_name_title = textcase.snake(title.strip()) + '.txt'
+            safe_name = secure_filename(textcase.snake(title.strip()))
+            file_name_title = safe_name + '.txt'
             for num in range(page_num):
                 text_ = file_reader.pages[num]
                 extracted_text += text_.extract_text()
@@ -50,7 +52,8 @@ class PDF_CONVERT():
             page_num = len(file_reader.pages)
             extracted_text = ""
             title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
-            file_name_title = textcase.snake(title.strip()) + '.doc'
+            safe_name = secure_filename(textcase.snake(title.strip()))
+            file_name_title = safe_name + '.doc'
             for num in range(page_num):
                 text_ = file_reader.pages[num]
                 extracted_text += text_.extract_text()
@@ -79,7 +82,8 @@ class PDF_CONVERT():
             page_num = len(file_reader.pages)
             extracted_text = ""
             title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
-            file_name_title = textcase.snake(title.strip()) + '.csv'
+            safe_name = secure_filename(textcase.snake(title.strip()))
+            file_name_title = safe_name + '.csv'
             for num in range(page_num):
                 text_ = file_reader.pages[num]
                 extracted_text += text_.extract_text()
@@ -110,7 +114,8 @@ class TXT_CONVERT():
         """
         #get title from filename
         title = file_.filename.rsplit('.', 1)[0]
-        file_name_title =  textcase.snake(title.strip()) + '.pdf'
+        safe_name = secure_filename(textcase.snake(title.strip()))
+        file_name_title = safe_name + '.pdf'
         
         # 2. Read text from the FileStorage object
         # Reset stream pointer to ensure we read from the beginning
@@ -148,7 +153,8 @@ class TXT_CONVERT():
         Converts a TXT file to a DOC file stream.
         """
         title = file_.filename.rsplit('.', 1)[0]
-        file_name_title =  textcase.snake(title.strip()) + '.doc'
+        safe_name = secure_filename(textcase.snake(title.strip()))
+        file_name_title = safe_name + '.doc'
         
         file_.seek(0)
         extracted_text = file_.read().decode('utf-8')
@@ -163,7 +169,8 @@ class TXT_CONVERT():
         Converts a TXT file to a CSV file stream.
         """
         title = file_.filename.rsplit('.', 1)[0]
-        file_name_title =  textcase.snake(title.strip()) + '.csv'
+        safe_name = secure_filename(textcase.snake(title.strip()))
+        file_name_title = safe_name + '.csv'
         
         file_.seek(0)
         extracted_text = file_.read().decode('utf-8')
@@ -182,7 +189,8 @@ class CSV_CONVERT():
         Converts a CSV file to a PDF file stream.
         """
         title = file_.filename.rsplit('.', 1)[0]
-        file_name_title =  textcase.snake(title.strip()) + '.pdf'
+        safe_name = secure_filename(textcase.snake(title.strip()))
+        file_name_title = safe_name + '.pdf'
         
         file_.seek(0)
         extracted_text = file_.read().decode('utf-8')
@@ -211,7 +219,8 @@ class CSV_CONVERT():
         Converts a CSV file to a DOC file stream.
         """
         title = file_.filename.rsplit('.', 1)[0]
-        file_name_title =  textcase.snake(title.strip()) + '.doc'
+        safe_name = secure_filename(textcase.snake(title.strip()))
+        file_name_title = safe_name + '.doc'
         
         file_.seek(0)
         extracted_text = file_.read().decode('utf-8')
@@ -226,7 +235,8 @@ class CSV_CONVERT():
         Converts a CSV file to a TXT file stream.
         """
         title = file_.filename.rsplit('.', 1)[0]
-        file_name_title =  textcase.snake(title.strip()) + '.txt'
+        safe_name = secure_filename(textcase.snake(title.strip()))
+        file_name_title = safe_name + '.txt'
         
         file_.seek(0)
         extracted_text = file_.read().decode('utf-8')
@@ -246,7 +256,8 @@ class DOC_CONVERT():
         Converts a DOC file to a PDF file stream.
         """
         title = file_.filename.rsplit('.', 1)[0]
-        file_name_title =  textcase.snake(title.strip()) + '.pdf'
+        safe_name = secure_filename(textcase.snake(title.strip()))
+        file_name_title = safe_name + '.doc'
         
         file_.seek(0)
         extracted_text = file_.read().decode('utf-8')
@@ -275,7 +286,8 @@ class DOC_CONVERT():
         Converts a DOC file to a TXT file stream.
         """
         title = file_.filename.rsplit('.', 1)[0]
-        file_name_title =  textcase.snake(title.strip()) + '.txt'
+        safe_name = secure_filename(textcase.snake(title.strip()))
+        file_name_title = safe_name + '.txt'
         
         file_.seek(0)
         extracted_text = file_.read().decode('utf-8')
@@ -290,7 +302,8 @@ class DOC_CONVERT():
         Converts a DOC file to a CSV file stream.
         """
         title = file_.filename.rsplit('.', 1)[0]
-        file_name_title =  textcase.snake(title.strip()) + '.csv'
+        safe_name = secure_filename(textcase.snake(title.strip()))
+        file_name_title = safe_name + '.csv'
         
         file_.seek(0)
         extracted_text = file_.read().decode('utf-8')
