@@ -9,6 +9,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # Limit to 16MB
 
 @app.route('/homepage')
 def homepage():
