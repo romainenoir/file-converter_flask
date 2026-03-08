@@ -17,7 +17,7 @@ class PDF_CONVERT():
         """
         try:
             file_reader = PdfReader(file_)
-            page_num = file_reader._get_num_pages()
+            page_num = len(file_reader.pages)
             extracted_text = ""
             title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
             file_name_title = textcase.snake(title.strip()) + '.txt'
@@ -47,7 +47,7 @@ class PDF_CONVERT():
         """
         try:
             file_reader = PdfReader(file_)
-            page_num = file_reader._get_num_pages()
+            page_num = len(file_reader.pages)
             extracted_text = ""
             title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
             file_name_title = textcase.snake(title.strip()) + '.doc'
@@ -76,7 +76,7 @@ class PDF_CONVERT():
         """
         try:
             file_reader = PdfReader(file_)
-            page_num = file_reader._get_num_pages()
+            page_num = len(file_reader.pages)
             extracted_text = ""
             title = file_reader.metadata.title if file_reader.metadata and file_reader.metadata.title else file_.filename.rsplit('.', 1)[0]
             file_name_title = textcase.snake(title.strip()) + '.csv'
