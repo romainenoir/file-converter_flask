@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en-uk">
     <head>
+        <!-- Primary Meta Tags -->
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{% block title %}FlipMyFile | File Converter {% endblock %}</title>
-        <meta name="description" content="Convert PDFs, DOCs, CSVs, & TXTs Files">
-        <meta name="keywords" content="file converter, pdfs to txt, txt to docs, txt to csvs">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/static/style.css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}FlipMyFile | File Converter{% endblock %}</title>
+        <meta name="title" content="FlipMyFile | Online File Converter">
+        <meta name="description" content="Convert PDFs, DOCs, CSVs, and TXT files easily and securely with FlipMyFile. Fast, reliable, and free online file conversion.">
+        <meta name="keywords" content="file converter, pdf to txt, txt to doc, txt to csv, online converter, FlipMyFile">
+        <meta name="author" content="Romaine Noir">
+        <meta name="robots" content="index, follow">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ request.url }}">
+        <meta property="og:title" content="FlipMyFile | File Converter">
+        <meta property="og:description" content="Convert PDFs, DOCs, CSVs, and TXT files interchangeably.">
+        <meta property="og:image" content="{{ url_for('static', filename='images/demo_program.png', _external=True) }}">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="{{ request.url }}">
+        <meta property="twitter:title" content="FlipMyFile | File Converter">
+        <meta property="twitter:description" content="Convert PDFs, DOCs, CSVs, and TXT files interchangeably.">
+        <meta property="twitter:image" content="{{ url_for('static', filename='images/demo_program.png', _external=True) }}">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/android-chrome-192x192.png') }}">
+
+        <!-- Theme Color for Mobile -->
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body class="content">
         <div class="navbar">
