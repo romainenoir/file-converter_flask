@@ -1,6 +1,7 @@
 from PyPDF2 import PdfReader #used for for exsisting pdf
 from PyPDF2.errors import PdfReadError, FileNotDecryptedError
 from werkzeug.utils import secure_filename
+from components.utils import encodeDetect
 from fpdf import FPDF #used to create new pdf
 import textcase
 import io
@@ -119,8 +120,9 @@ class TXT_CONVERT():
         
         # 2. Read text from the FileStorage object
         # Reset stream pointer to ensure we read from the beginning
+        encode_ = encodeDetect(file_object=file_)
         file_.seek(0)
-        extracted_text = file_.read().decode('utf-8')
+        extracted_text = file_.read().decode(encode_)
         
         # For Reference, this is how to write to pdf using FPDF
         # Create the PDF object
@@ -156,8 +158,9 @@ class TXT_CONVERT():
         safe_name = secure_filename(textcase.snake(title.strip()))
         file_name_title = safe_name + '.doc'
         
+        encode_ = encodeDetect(file_object=file_)
         file_.seek(0)
-        extracted_text = file_.read().decode('utf-8')
+        extracted_text = file_.read().decode(encode_)
         
         file_stream = io.BytesIO()
         file_stream.write(extracted_text.encode('utf-8'))
@@ -172,8 +175,9 @@ class TXT_CONVERT():
         safe_name = secure_filename(textcase.snake(title.strip()))
         file_name_title = safe_name + '.csv'
         
+        encode_ = encodeDetect(file_object=file_)
         file_.seek(0)
-        extracted_text = file_.read().decode('utf-8')
+        extracted_text = file_.read().decode(encode_)
         
         file_stream = io.BytesIO()
         file_stream.write(extracted_text.encode('utf-8'))
@@ -192,8 +196,9 @@ class CSV_CONVERT():
         safe_name = secure_filename(textcase.snake(title.strip()))
         file_name_title = safe_name + '.pdf'
         
+        encode_ = encodeDetect(file_object=file_)
         file_.seek(0)
-        extracted_text = file_.read().decode('utf-8')
+        extracted_text = file_.read().decode(encode_)
         
         pdf_object = FPDF()
         pdf_object.add_page()
@@ -222,8 +227,9 @@ class CSV_CONVERT():
         safe_name = secure_filename(textcase.snake(title.strip()))
         file_name_title = safe_name + '.doc'
         
+        encode_ = encodeDetect(file_object=file_)
         file_.seek(0)
-        extracted_text = file_.read().decode('utf-8')
+        extracted_text = file_.read().decode(encode_)
         
         file_stream = io.BytesIO()
         file_stream.write(extracted_text.encode('utf-8'))
@@ -238,8 +244,9 @@ class CSV_CONVERT():
         safe_name = secure_filename(textcase.snake(title.strip()))
         file_name_title = safe_name + '.txt'
         
+        encode_ = encodeDetect(file_object=file_)
         file_.seek(0)
-        extracted_text = file_.read().decode('utf-8')
+        extracted_text = file_.read().decode(encode_)
         
         file_stream = io.BytesIO()
         file_stream.write(extracted_text.encode('utf-8'))
@@ -259,8 +266,9 @@ class DOC_CONVERT():
         safe_name = secure_filename(textcase.snake(title.strip()))
         file_name_title = safe_name + '.doc'
         
+        encode_ = encodeDetect(file_object=file_)
         file_.seek(0)
-        extracted_text = file_.read().decode('utf-8')
+        extracted_text = file_.read().decode(encode_)
         
         pdf_object = FPDF()
         pdf_object.add_page()
@@ -289,8 +297,9 @@ class DOC_CONVERT():
         safe_name = secure_filename(textcase.snake(title.strip()))
         file_name_title = safe_name + '.txt'
         
+        encode_ = encodeDetect(file_object=file_)
         file_.seek(0)
-        extracted_text = file_.read().decode('utf-8')
+        extracted_text = file_.read().decode(encode_)
         
         file_stream = io.BytesIO()
         file_stream.write(extracted_text.encode('utf-8'))
@@ -305,8 +314,9 @@ class DOC_CONVERT():
         safe_name = secure_filename(textcase.snake(title.strip()))
         file_name_title = safe_name + '.csv'
         
+        encode_ = encodeDetect(file_object=file_)
         file_.seek(0)
-        extracted_text = file_.read().decode('utf-8')
+        extracted_text = file_.read().decode(encode_)
         
         file_stream = io.BytesIO()
         file_stream.write(extracted_text.encode('utf-8'))
